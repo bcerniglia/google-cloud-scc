@@ -16,13 +16,13 @@ Asset listing is done either at the project, folder, or, organization level. The
 you work your way up the hierarchy.
 
 List all assets within a projects  
-```gcloud beta scc assets list projects/prj-example-1234```
+> gcloud beta scc assets list projects/prj-example-1234
 
 List all assets under a folder within our organization  
-```gcloud beta scc assets list folders/123456789012```
+> gcloud beta scc assets list folders/123456789012 
 
 List all assets under our organization   
-```gcloud beta scc assets list 424183677400```
+> gcloud beta scc assets list 424183677400
 
 ## Finding and Filtering Assets
 
@@ -31,9 +31,7 @@ Take note of the two separate services being referenced in that list, Cloud Asse
 
 
 **List out every resource within a project and flatten it - flattening will help understand the key/value nature of this output**  
-```
-gcloud beta scc assets list projects/prj-example-1234 --format=flattened
-```
+> gcloud beta scc assets list projects/prj-example-1234 --format=flattened
 
 
 ```
@@ -63,10 +61,8 @@ asset.updateTime:                                                    2022-03-01T
 
 **List every resource within a project that has a resourceType: google.logging.LogBucket**
 
-```
-gcloud beta scc assets list projects/prj-example-1234 \
---filter="security_center_properties.resource_type = \"google.logging.LogBucket\"" --format=flattened
-```
+> gcloud beta scc assets list projects/prj-example-1234 --filter="security_center_properties.resource_type = \"google.logging.LogBucket\"" --format=flattened
+
 
 ```
 asset.canonicalName:                                                 projects/2222111122222/assets/15883817191309541680
@@ -112,13 +108,8 @@ fldr-5678           prj-example-5678        google.cloud.storage.Bucket  bkt-sta
 
 Add a 30day archive lifecycle on bucket 'bkt-state-1234' which currently resides in project prj-example-1234   
 *A set of example lifecycle rules are kept in json format in the 'lifecycles' directory*  
-```
-gsutil lifecycle set lifecycles/archive_30d.json gs://bkt-state-1234
-```
+> gsutil lifecycle set lifecycles/archive_30d.json gs://bkt-state-1234
 
-```
-Setting lifecycle configuration on gs://bkt-state-1234/...
-```
 
 Rerun our asset search from the first step and we should see the following:
 ```
@@ -128,10 +119,8 @@ fldr-5678           prj-example-5678        google.cloud.storage.Bucket  bkt-sta
 ```
 
 Remove any lifecycle rule applied to a bucket
+> gsutil lifecycle set lifecycles/empty.json gs://bkt-state-1234
 
-```
-gsutil lifecycle set lifecycles/empty.json gs://bkt-state-1234
-```
 
 Rerun our asset search from the first step and we should see the following:
 ```
