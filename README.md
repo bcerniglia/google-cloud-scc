@@ -36,7 +36,7 @@ gcloud beta scc assets list projects/prj-example-1234 --format=flattened
 ```
 
 
-```json
+```
 asset.canonicalName:                                                 projects/2222111122222/assets/6584984351265465464
 asset.createTime:                                                    2022-03-01T05:09:31.186Z
 asset.iamPolicy:                                                     {}
@@ -68,7 +68,7 @@ gcloud beta scc assets list projects/prj-example-1234 \
 --filter="security_center_properties.resource_type = \"google.logging.LogBucket\"" --format=flattened
 ```
 
-```json
+```
 asset.canonicalName:                                                 projects/2222111122222/assets/15883817191309541680
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~OMITTED
